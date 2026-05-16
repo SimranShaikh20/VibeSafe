@@ -1,0 +1,79 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-bg: #0a0a0f;
+  --color-surface: #111118;
+  --color-border: #1e1e2e;
+  --color-accent: #00ff88;
+  --color-warn: #ffb347;
+  --color-danger: #ff4444;
+  --color-info: #4488ff;
+  --color-text: #e0e0f0;
+  --color-muted: #4a4a6a;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Mono", "JetBrains Mono", monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #0a0a0f;
+  color: #e0e0f0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  border-color: #1e1e2e;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #1e1e2e; }
+::-webkit-scrollbar-thumb { background: #2a2a3e; }
+::-webkit-scrollbar-thumb:hover { background: #00ff88; }
+
+@keyframes vs-scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+.vs-scanline {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  z-index: 9999;
+  pointer-events: none;
+  animation: vs-scan 4s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes vs-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.vs-pulse { animation: vs-pulse 1.5s ease-in-out infinite; }
+
+@keyframes vs-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.vs-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: #00ff88;
+  animation: vs-blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+.vs-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.font-display { font-family: "Space Mono", "JetBrains Mono", monospace; }
